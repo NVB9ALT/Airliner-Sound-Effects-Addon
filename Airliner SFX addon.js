@@ -1,3 +1,4 @@
+ui.notification.show("This addon is still in development. As such, running it may cause bugs, errors, or parts of the simulation may break.")
 // Copyright Ariakim Taiyo
 
 //Modified by NVB9
