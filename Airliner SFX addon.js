@@ -17,6 +17,11 @@ script737.onload = function (){change737s()}
 
 b737Sounds = 1
       }
+else {
+	clearInterval(soundInt)
+	clearInterval(tcasIntervalAnnounce)
+	b737Sounds = 0
+}
    }
 }
 let checkInterval = setInterval(function(){
