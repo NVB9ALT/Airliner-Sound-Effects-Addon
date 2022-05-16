@@ -25,8 +25,12 @@ b737Sounds = 1
 //if the aircraft isn't a 737
 else {
 //clearing the intervals when the aircraft isn't a 737 to avoid filling up the console with errors
-	clearInterval(soundInt)
+if (typeof soundInt !== 'undefined') {
+   clearInterval(soundInt)
+}
+if (typeof tcasIntervalAnnounce !== 'undefined') {
 	clearInterval(tcasIntervalAnnounce)
+}
 //making sure the script can run again next time a 737 is selected
 	b737Sounds = 0
    }
