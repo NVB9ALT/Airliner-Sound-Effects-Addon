@@ -41,6 +41,9 @@ let checkInterval = setInterval(function(){
 checkForBoeing()
 }, 1000)
 
-//Concorde engine sounds
-//Airbus alarms (except A220)
-//777 expansion
+//Future plans:
+/*
+Concorde engine sounds
+Airbus alarms (except A220)
+777 expansion
+*/
