@@ -1,5 +1,5 @@
 ui.notification.show("This addon is still in development. As such, running it may cause bugs, errors, or parts of the simulation may break.")
-// Copyright Ariakim Taiyo
+// Original script copyright Ariakim Taiyo
 
 //Modified by NVB9
 
@@ -13,7 +13,7 @@ if (b737Sounds == 0){ //if the script hasn't already run on this aircraft
 
 //running the script
 var script737 = document.createElement('script'); 
-script737.src="https://cdn.jsdelivr.net/gh/NVB9ALT/GeoFs-737-Immersion-SFX@main/index.js";
+script737.src="https://cdn.jsdelivr.net/gh/NVB9ALT/GeoFs-737-Immersion-SFX-Repo-V3@main/index.js";
 document.body.appendChild(script737);
 script737.onload = function (){change737s()}
 
