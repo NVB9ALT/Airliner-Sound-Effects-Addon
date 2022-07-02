@@ -25,10 +25,10 @@ b737Sounds = 1
 //if the aircraft isn't a 737
 else {
 //clearing the intervals when the aircraft isn't a 737 to avoid filling up the console with errors
-if (typeof soundInt !== 'undefined') {
+if (typeof soundInt == 'undefined') {
    clearInterval(soundInt)
 }
-if (typeof tcasIntervalAnnounce !== 'undefined') {
+if (typeof tcasIntervalAnnounce == 'undefined') {
 	clearInterval(tcasIntervalAnnounce)
 }
 //making sure the script can run again next time a 737 is selected
@@ -43,7 +43,7 @@ checkForBoeing()
 
 //Future plans:
 /*
-Concorde engine sounds
+Concorde engine sounds (maybe)
 Airbus alarms (except A220)
-777 expansion
+777 sounds
 */
