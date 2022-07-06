@@ -1,5 +1,7 @@
 # Airliner-Sound-Effects-Addon
 
-This addon will add immersion sounds to all Boeing 737s, add alarms to all Boeing and Airbus airliners except for the A220 (since the A220 was originally a Bombardier plane), and maybe also add different front and back sounds for the Concorde.
+NOTE: THIS ADDON IS NOT YET COMPLETE. UPDATES ARE COMING RELATIVELY SOON.
 
-PLEASE NOTE: This addon is not complete, is not in active development at the time of this edit, and (as far as I know) breaks the respawn and TP system when used.
+This is essentially a "run-and-forget" addon. You run the addon and essentially forget about it, and whenever you are using any 737 in GeoFS, it will have AriakimTaiyo's custom sound effects originally for the 737-700. It's a wonderful addon, and it'll get more wonderful through the month, as I add alarm and engine sound effects for the A320 family, all the other Boeing aircraft, the Boeing 777 revamp, and even dynamic Concorde sounds.
+
+Please note: if you run the addon while in a non-737, it will fill the console with "soundInt is not defined" errors until you switch to a 737. However, once you switch back out of a 737, you won't get the errors. Please ignore these specific console errors, I'm trying to fix it and this addon is also incomplete.
