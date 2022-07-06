@@ -6,14 +6,14 @@ ui.notification.show("This addon is still in development. As such, running it ma
 //variable to tell if the script has run or not
 var b737Sounds = new Boolean(0)
 
-function checkForBoeing() {
+function checkForBoeing737() {
 
 if (geofs.aircraft.instance.id == 4 || geofs.aircraft.instance.id == 2769 || geofs.aircraft.instance.id == 2772 || geofs.aircraft.instance.id == 3011 || geofs.aircraft.instance.id == 3054) { //if the aircraft currently being flown is a 737
 if (b737Sounds == 0){ //if the script hasn't already run on this aircraft
 
 //running the script
 var script737 = document.createElement('script'); 
-script737.src="https://cdn.jsdelivr.net/gh/NVB9ALT/GeoFs-737-Immersion-SFX-Repo-V3@main/index.js";
+script737.src="https://cdn.jsdelivr.net/gh/NVB9ALT/GeoFs-737-Immersion-SFX-Repo-V3@main/indexO.js";
 document.body.appendChild(script737);
 script737.onload = function (){change737s()}
 
@@ -25,12 +25,13 @@ b737Sounds = 1
 //if the aircraft isn't a 737
 else {
 //clearing the intervals when the aircraft isn't a 737 to avoid filling up the console with errors
-if (typeof soundInt == 'undefined') {
-   clearInterval(soundInt)
-}
-if (typeof tcasIntervalAnnounce == 'undefined') {
-	clearInterval(tcasIntervalAnnounce)
-}
+// soundInt & tcasIntervalAnnounce
+   if (typeof soundInt != undefined) {
+	   clearInterval(soundInt)
+	}
+	if (typeof tcasIntervalAnnounce != undefined) {
+	   clearInterval(tcasIntervalAnnounce)
+	}
 //making sure the script can run again next time a 737 is selected
 	b737Sounds = 0
    }
@@ -38,12 +39,5 @@ if (typeof tcasIntervalAnnounce == 'undefined') {
 
 //running the above function once per second
 let checkInterval = setInterval(function(){
-checkForBoeing()
+checkForBoeing737()
 }, 1000)
-
-//Future plans:
-/*
-Concorde engine sounds (maybe)
-Airbus alarms (except A220)
-777 sounds
-*/
