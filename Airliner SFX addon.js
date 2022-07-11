@@ -23,19 +23,12 @@ b737Sounds = 1
 //if the aircraft isn't a 737
 else {
 //clearing the intervals when the aircraft isn't a 737 to avoid filling up the console with errors
-if (typeof sountInt == undefined) {
-clearInterval(clearIntervalInterval)
-} else {
-function clearIntervals() {
    if (typeof soundInt != undefined) {
 	   clearInterval(soundInt)
 	}
 	if (typeof tcasIntervalAnnounce != undefined) {
 	   clearInterval(tcasIntervalAnnounce)
 	}
-}
-clearIntervalInterval = setInterval(function(){clearIntervals()}, 1000)
-}
 //making sure the script can run again next time a 737 is selected
 	b737Sounds = 0
    }
@@ -46,33 +39,26 @@ checkInterval = setInterval(function(){
 checkForBoeing737()
 }, 1000)
 //-----------------------------------------------------------------------------------------------------------------------------------------
-var B777Effects = new Boolean(0)
+var b777sounds = new Boolean(0)
 
 function checkForBoeing777() {
 
 if (geofs.aircraft.instance.id == 240) {
-if (B777Effects == 0){ 
+if (b777sounds == 0){
 
 var script777 = document.createElement('script'); 
-script777.src="https://cdn.jsdelivr.net/gh/NVB9ALT/777-Realism-Overhaul-for-Realism-Addon@main/indexE.js";
+script777.src="https://cdn.jsdelivr.net/gh/NVB9ALT/777-Realism-Overhaul-for-Realism-Addon@main/indexA.js";
 document.body.appendChild(script777);
 script777.onload = function (){change777s()}
 
-B777Effects = 1
+b777sounds = 1
       }
    }
 else {
-if (typeof effectInterval == undefined) {
-clearInterval(clearIntervalInterval)
-} else {
-function clearIntervals() {
-   if (typeof effectInterval != undefined) {
-	   clearInterval(effectInterval)
-	}
+if (typeof effectInterval != undefined) {
+   clearInterval(effectInterval)
 }
-clearIntervalInterval = setInterval(function(){clearIntervals()}, 1000)
-	B777Effects = 0
-      }
+	b777sounds = 0
    }
 }
 
