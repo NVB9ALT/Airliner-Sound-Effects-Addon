@@ -1,13 +1,11 @@
-ui.notification.show("This addon is still in development. As such, running it may cause bugs, errors, or parts of the simulation may break.")
-// Original script copyright Ariakim Taiyo
-
-//Modified by NVB9
+ui.notification.show("This addon is still in development. As such, running it may cause bugs, errors, or parts of the simulation may break.");
+console.log("Original scripts copyright Ariakim Taiyo");
+console.log("Modified by NVB9");
 
 //variable to tell if the script has run or not
 var b737Sounds = new Boolean(0)
 
 function checkForBoeing737() {
-
 if (geofs.aircraft.instance.id == 4 || geofs.aircraft.instance.id == 2769 || geofs.aircraft.instance.id == 2772 || geofs.aircraft.instance.id == 3011 || geofs.aircraft.instance.id == 3054) { //if the aircraft currently being flown is a 737
 if (b737Sounds == 0){ //if the script hasn't already run on this aircraft
 
@@ -25,19 +23,66 @@ b737Sounds = 1
 //if the aircraft isn't a 737
 else {
 //clearing the intervals when the aircraft isn't a 737 to avoid filling up the console with errors
-// soundInt & tcasIntervalAnnounce
+if (typeof sountInt == undefined) {
+clearInterval(clearIntervalInterval)
+} else {
+function clearIntervals() {
    if (typeof soundInt != undefined) {
 	   clearInterval(soundInt)
 	}
 	if (typeof tcasIntervalAnnounce != undefined) {
 	   clearInterval(tcasIntervalAnnounce)
 	}
+}
+clearIntervalInterval = setInterval(function(){clearIntervals()}, 1000)
+}
 //making sure the script can run again next time a 737 is selected
 	b737Sounds = 0
    }
 }
 
 //running the above function once per second
-let checkInterval = setInterval(function(){
+checkInterval = setInterval(function(){
 checkForBoeing737()
 }, 1000)
+//-----------------------------------------------------------------------------------------------------------------------------------------
+var B777Effects = new Boolean(0)
+
+function checkForBoeing777() {
+
+if (geofs.aircraft.instance.id == 240) {
+if (B777Effects == 0){ 
+
+var script777 = document.createElement('script'); 
+script777.src="https://cdn.jsdelivr.net/gh/NVB9ALT/777-Realism-Overhaul-for-Realism-Addon@main/indexE.js";
+document.body.appendChild(script777);
+script777.onload = function (){change777s()}
+
+B777Effects = 1
+      }
+   }
+else {
+if (typeof effectInterval == undefined) {
+clearInterval(clearIntervalInterval)
+} else {
+function clearIntervals() {
+   if (typeof effectInterval != undefined) {
+	   clearInterval(effectInterval)
+	}
+}
+clearIntervalInterval = setInterval(function(){clearIntervals()}, 1000)
+	B777Effects = 0
+      }
+   }
+}
+
+checkInterval = setInterval(function(){
+checkForBoeing777()
+}, 1000)
+
+
+//Future plans:
+/*
+Concorde engine sounds (maybe)
+Airbus alarms (except A220)
+*/
