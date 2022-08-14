@@ -10,7 +10,6 @@ geofs.flyTo = function(a, b) {
     },10)
 
     soundInt = setInterval(function(){
-      getFinalSoundVolumes();
       getGearFlapsWarn();
       testForApproach();
       testTerrainorAppr();
@@ -490,7 +489,6 @@ function doRadioAltCall(){
 
 
 soundInt = setInterval(function(){
-  getFinalSoundVolumes();
   getGearFlapsWarn();
   testForApproach();
   testTerrainorAppr();
