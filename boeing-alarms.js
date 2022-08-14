@@ -92,6 +92,7 @@ geofs.animation.values.trimSound = null;
 
 let lastFlapPos = 0;
 let lastFlapTarg = 0;
+let lastTerrainCall = 0;
 
 function getFlapsSound() {
   if (geofs.camera.currentModeName == "Left wing" || geofs.camera.currentModeName == "Right wing") {
@@ -367,14 +368,16 @@ if (geofs.animation.values.groundContact == 1) {
 }
 
 function testTerrainorAppr() {
-	if (geofs.animation.values.gearPosition == 0) {
-		if ( && geofs.animation.values.isGearWarn == 0 && geofs.animation.values.isFlapsWarn == 0 && isApprConfig == 0) {
+lastTerrainCall = geofs.animation.values.haglFeet
+setTimeout(() => {
+	if (geofs.animation.values.isGearWarn == 0 && geofs.animation.values.isFlapsWarn == 0 && isApprConfig == 0) {
+		if ((lastTerrainCall - geofs.animation.values.haglFeet) <= 200) {
 			geofs.animation.values.isTerrainWarn = 1;
 		} else {
 			geofs.animation.values.isTerrainWarn = 0;
 		}
 
-		if () {
+		if ((lastTerrainCall - geofs.animation.values.haglFeet) <= 500 || (geofs.animation.values.haglFeet <= 1000 && isApprConfig == 0)) {
 			geofs.animation.values.isPullupWarn = 1;
 		} else {
 			geofs.animation.values.isPullupWarn = 0;
@@ -384,6 +387,7 @@ function testTerrainorAppr() {
     geofs.animation.values.isPullupWarn = 0;
 		return;
 	}
+}, 1000)
 }
 
 
