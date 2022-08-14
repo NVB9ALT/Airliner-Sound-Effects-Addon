@@ -313,7 +313,7 @@ geofs.aircraft.instance.definition.sounds[42].effects = {
 		"value": "trimSound"
 	}
 };
-
+}
 assignSounds()
 
 
@@ -368,7 +368,7 @@ if (geofs.animation.values.groundContact == 1) {
 }
 
 function testTerrainorAppr() {
-lastTerrainCall = geofs.animation.values.haglFeet
+lastTerrainCall = geofs.animation.values.haglFeet;
 setTimeout(() => {
 	if (geofs.animation.values.isGearWarn == 0 && geofs.animation.values.isFlapsWarn == 0 && isApprConfig == 0) {
 		if ((lastTerrainCall - geofs.animation.values.haglFeet) <= 200) {
@@ -387,8 +387,8 @@ setTimeout(() => {
     geofs.animation.values.isPullupWarn = 0;
 		return;
 	}
-}, 1000)
-}
+}, 1000);
+};
 
 
 function testForApproach(){
