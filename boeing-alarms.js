@@ -1,32 +1,10 @@
 // Copyright 2022 Ariakim Taiyo
 
 //fix bug with reset
+console.log ("Copyright 2022 Ariakim Taiyo")
+
+//fix bug with reset
 geofs.flyTo = function(a, b) {
-  clearInterval(soundInt)
-  clearInterval(accelInt);
-  setTimeout(function(){
-    accelInt = setInterval(function(){
-      getAccel()
-    },10)
-
-    soundInt = setInterval(function(){
-      getGearFlapsWarn();
-      testForApproach();
-      testTerrainorAppr();
-      doRadioAltCall();
-      overspeed();
-      getTrimSound();
-      getFlapsSound();
-      getFlapsClick();
-    })
-  }, 2000)
-
-  geofs.animation.values.overspeed = null;
-  geofs.animation.values.rainVol = null;
-  geofs.animation.values.spoilersSound = null;
-  geofs.animation.values.flapsClick = null;
-  geofs.animation.values.flapsSound = null;
-  geofs.animation.values.trimSound = null;
     if (a) {
         geofs.doPause(1);
         var c = geofs.aircraft.instance;
@@ -37,50 +15,66 @@ geofs.flyTo = function(a, b) {
         c.absoluteStartAltitude = a[4] ? !0 : !1;
         c.startAltitude = a[2];
         geofs.lastFlightCoordinates = a;
-        var d = a[0]
-          , e = a[1]
-          , f = a[2]
-          , g = [0, 0, 0];
-        g[0] = a[3];
-        var k = 0 == f;
-        c.llaLocation = [d, e, f];
-        b ? geofs.camera.set(geofs.camera.currentMode) : (geofs.probeTerrain(),
-        geofs.camera.reset(),
-        controls.reset(),
-        weather.reset(),
-        weather.refresh());
+        var d = a[0],
+            e = a[1],
+            g = a[2],
+            f = [0, 0, 0];
+        f[0] = a[3];
+        var k = 0 == g;
+        c.llaLocation = [d, e, g];
+        b ? geofs.camera.set(geofs.camera.currentMode) : (geofs.probeTerrain(), geofs.camera.reset(), controls.reset(), weather.reset(), weather.refresh());
         geofs.api.waterDetection.reset();
         c.reset(k);
-        flight.reset();
-        objects.updateVisibility();
-        objects.updateCollidables();
+        instruments.reset();
+        geofs.objects.update(c.llaLocation);
         geofs.runways.refresh();
         geofs.runwaysLights.updateAll();
         ui.hideCrashNotification();
-        geofs.api.getGuarantiedGroundAltitude([d, e, 0]).then(function(m) {
+        geofs.api.getGuarantiedGroundAltitude([d, e, 0]).then(function (m) {
             m = m[0].height || 0;
             geofs.groundElevation = m;
-            k ? (c.startAltitude = geofs.groundElevation + c.definition.startAltitude,
-            c.absoluteStartAltitude = !1) : c.absoluteStartAltitude || (c.startAltitude += geofs.groundElevation);
+            flight.reset(geofs.groundElevation);
+            k ? ((c.startAltitude = geofs.groundElevation + c.definition.startAltitude), (c.absoluteStartAltitude = !1)) : c.absoluteStartAltitude || (c.startAltitude += geofs.groundElevation);
             c.llaLocation[2] = c.startAltitude;
             flight.elevationAtPreviousLocation = m;
-            k ? (g[1] = c.definition.startTilt || 0,
-            c.startOnGround = !0,
-            c.groundContact = !0,
-            c.place(c.llaLocation, g),
-            c.object3d.compute(c.llaLocation),
-            c.render()) : (c.startOnGround = !1,
-            c.place(c.llaLocation, g),
-            c.object3d.compute(c.llaLocation),
-            m = c.definition.minimumSpeed / 1.94 * c.definition.mass,
-            c.rigidBody.applyCentralImpulse(V3.scale(c.object3d.getWorldFrame()[1], m)));
+            k
+                ? ((f[1] = c.definition.startTilt || 0), (c.startOnGround = !0), (c.groundContact = !0), c.place(c.llaLocation, f), c.object3d.compute(c.llaLocation), c.render())
+                : ((c.startOnGround = !1),
+                  c.place(c.llaLocation, f),
+                  c.object3d.compute(c.llaLocation),
+                  (m = (c.definition.minimumSpeed / 1.94) * c.definition.mass),
+                  c.rigidBody.applyCentralImpulse(V3.scale(c.object3d.getWorldFrame()[1], m)));
             geofs.undoPause(1);
             geofs.camera.setToNeutral();
             geofs.camera.update(2);
             flight.recorder.clear();
-            $(document).trigger("flyto")
-        })
-    }
+            $(document).trigger("flyto");
+        });
+    };
+
+  clearInterval(soundInt)
+
+    soundInt = setInterval(function(){
+      getGearFlapsWarn();
+      testForApproach();
+      testTerrainorAppr();
+      doRadioAltCall();
+      overspeed();
+      getTrimSound();
+      getFlapsSound();
+      getFlapsClick();
+    }, 10)
+  }, 2000)
+  geofs.animation.values.overspeed = null;
+geofs.animation.values.spoilersSound = null;          
+geofs.animation.values.flapsClick = null;
+geofs.animation.values.flapsSound = null;
+geofs.animation.values.trimSound = null;
+
+let lastFlapPos = 0;
+let lastFlapTarg = 0;
+let lastTerrainCall = 0;
+
 };
 //define new variables
 geofs.animation.values.overspeed = null;
