@@ -53,7 +53,7 @@ geofs.flyTo = function(a, b) {
     };
 
   clearInterval(soundInt)
-
+  setTimeout(function(){
     soundInt = setInterval(function(){
       getGearFlapsWarn();
       testForApproach();
@@ -74,8 +74,8 @@ geofs.animation.values.trimSound = null;
 let lastFlapPos = 0;
 let lastFlapTarg = 0;
 let lastTerrainCall = 0;
-
 };
+
 //define new variables
 geofs.animation.values.overspeed = null;
 geofs.animation.values.spoilersSound = null;          
