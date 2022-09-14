@@ -1,18 +1,23 @@
 console.log("Original scripts copyright Ariakim Taiyo");
 console.log("Modified by NVB9");
 
+//General rain/buffet effects
+
+
+
 //variable to tell if the script has run or not
 var b737Sounds = new Boolean(0)
+soundInt = null;
+tcasIntervalAnnounce = null;
 
 function checkForBoeing737() {
-if (geofs.aircraft.instance.id == 4 || geofs.aircraft.instance.id == 2769 || geofs.aircraft.instance.id == 2772 || geofs.aircraft.instance.id == 3011 || geofs.aircraft.instance.id == 3054) { //if the aircraft currently being flown is a 737
+if (geofs.aircraft.instance.id == 4) { //if the aircraft currently being flown is a 737
 if (b737Sounds == 0){ //if the script hasn't already run on this aircraft
 
 //running the script
 var script737 = document.createElement('script'); 
-script737.src="https://cdn.jsdelivr.net/gh/NVB9ALT/GeoFs-737-Immersion-SFX-Repo-for-Realism-Addon@main/indexE.js";
+script737.src="https://raw.githack.com/Ariakim-Taiyo/GeoFs-737-Immersion-SFX/main/index.js";
 document.body.appendChild(script737);
-script737.onload = function (){change737s()}
 
 //script has run now, so we change scriptHasRun to avoid having the script execute multiple times per aircraft instance
 //this avoids massive lag
